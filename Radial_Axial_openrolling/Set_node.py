@@ -24,12 +24,12 @@ import connectorBehavior
 s='Model-1'
 points=24
 
-#ÉÏ¶ËÍâÈ¦µãSA
+#ä¸Šç«¯å¤–åœˆç‚¹SA
 point_one=1
 point_two=559
 diff=558
 for i in range(1,points+1):
-    session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)#ÔÚÊÓÍ¼ÖĞÏÔÊ¾Íø¸ñ
+    session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON)#åœ¨è§†å›¾ä¸­æ˜¾ç¤ºç½‘æ ¼
 
     a = mdb.models[s].rootAssembly
     n1 = a.instances['Ring-1'].nodes
@@ -49,26 +49,26 @@ for i in range(1,points+1):
     createStepName='Step-1', variables=('COOR3', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
 
-#ÉÏÈ¦ÄÚµãSB
+#ä¸Šåœˆå†…ç‚¹SB
 point_one_in = 6
 point_two_out = point_one_in +diff
 for i in range(1,points+1):
     a = mdb.models[s].rootAssembly
     n1 = a.instances['Ring-1'].nodes
 
-    nodes1 = n1[(point_one_in-1+diff*(i-1)):(point_one_in+diff*(i-1))]#Ñ¡Ôñ½Úµã·¶Î§
+    nodes1 = n1[(point_one_in-1+diff*(i-1)):(point_one_in+diff*(i-1))]#é€‰æ‹©èŠ‚ç‚¹èŒƒå›´
     a.Set(nodes=nodes1, name='SB%s'%i)
 
     session.viewports['Viewport: 1'].assemblyDisplay.setValues(adaptiveMeshConstraints=ON)
 
     regionDef=mdb.models[s].rootAssembly.sets['SB%s'%i]
-    #´´½¨x·½ÏòµÄÀú³ÌÊä³öÇëÇó
+    #åˆ›å»ºxæ–¹å‘çš„å†ç¨‹è¾“å‡ºè¯·æ±‚
     mdb.models[s].HistoryOutputRequest(name='XB%s'%i,
     createStepName='Step-1', variables=('COOR1', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
-    #»ñÈ¡¸Õ¸Õ´´Á¢µÄ¼¯ºÏ
+    #è·å–åˆšåˆšåˆ›ç«‹çš„é›†åˆ
     regionDef=mdb.models[s].rootAssembly.sets['SB%s'%i]
-    #´´½¨y·½ÏòµÄÀú³ÌÊä³öÇëÇó
+    #åˆ›å»ºyæ–¹å‘çš„å†ç¨‹è¾“å‡ºè¯·æ±‚
     mdb.models[s].HistoryOutputRequest(name='YB%s'%i,
     createStepName='Step-1', variables=('COOR3', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
@@ -80,19 +80,19 @@ for i in range(1,points+1):
     a = mdb.models[s].rootAssembly
     n1 = a.instances['Ring-1'].nodes
 
-    nodes1 = n1[(point_three_in-1+diff*(i-1)):(point_three_in+diff*(i-1))]#Ñ¡Ôñ½Úµã·¶Î§
+    nodes1 = n1[(point_three_in-1+diff*(i-1)):(point_three_in+diff*(i-1))]#é€‰æ‹©èŠ‚ç‚¹èŒƒå›´
     a.Set(nodes=nodes1, name='SC%s'%i)
 
     session.viewports['Viewport: 1'].assemblyDisplay.setValues(adaptiveMeshConstraints=ON)
 
     regionDef=mdb.models[s].rootAssembly.sets['SC%s'%i]
-    #´´½¨x·½ÏòµÄÀú³ÌÊä³öÇëÇó
+    #åˆ›å»ºxæ–¹å‘çš„å†ç¨‹è¾“å‡ºè¯·æ±‚
     mdb.models[s].HistoryOutputRequest(name='XC%s'%i,
     createStepName='Step-1', variables=('COOR1', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
-    #»ñÈ¡¸Õ¸Õ´´Á¢µÄ¼¯ºÏ
+    #è·å–åˆšåˆšåˆ›ç«‹çš„é›†åˆ
     regionDef=mdb.models[s].rootAssembly.sets['SC%s'%i]
-    #´´½¨y·½ÏòµÄÀú³ÌÊä³öÇëÇó
+    #åˆ›å»ºyæ–¹å‘çš„å†ç¨‹è¾“å‡ºè¯·æ±‚
     mdb.models[s].HistoryOutputRequest(name='YC%s'%i,
     createStepName='Step-1', variables=('COOR3', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
@@ -104,19 +104,19 @@ for i in range(1,points+1):
     a = mdb.models[s].rootAssembly
     n1 = a.instances['Ring-1'].nodes
 
-    nodes1 = n1[(point_five_in-1+diff*(i-1)):(point_five_in+diff*(i-1))]#Ñ¡Ôñ½Úµã·¶Î§
+    nodes1 = n1[(point_five_in-1+diff*(i-1)):(point_five_in+diff*(i-1))]#é€‰æ‹©èŠ‚ç‚¹èŒƒå›´
     a.Set(nodes=nodes1, name='SD%s'%i)
 
     session.viewports['Viewport: 1'].assemblyDisplay.setValues(adaptiveMeshConstraints=ON)
 
     regionDef=mdb.models[s].rootAssembly.sets['SD%s'%i]
-    #´´½¨x·½ÏòµÄÀú³ÌÊä³öÇëÇó
+    #åˆ›å»ºxæ–¹å‘çš„å†ç¨‹è¾“å‡ºè¯·æ±‚
     mdb.models[s].HistoryOutputRequest(name='XD%s'%i,
     createStepName='Step-1', variables=('COOR1', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
-    #»ñÈ¡¸Õ¸Õ´´Á¢µÄ¼¯ºÏ
+    #è·å–åˆšåˆšåˆ›ç«‹çš„é›†åˆ
     regionDef=mdb.models[s].rootAssembly.sets['SD%s'%i]
-    #´´½¨y·½ÏòµÄÀú³ÌÊä³öÇëÇó
+    #åˆ›å»ºyæ–¹å‘çš„å†ç¨‹è¾“å‡ºè¯·æ±‚
     mdb.models[s].HistoryOutputRequest(name='YD%s'%i,
     createStepName='Step-1', variables=('COOR3', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
@@ -127,19 +127,19 @@ for i in range(1,points+1):
     a = mdb.models[s].rootAssembly
     n1 = a.instances['Ring-1'].nodes
 
-    nodes1 = n1[(point_7-1+diff*(i-1)):(point_7+diff*(i-1))]#Ñ¡Ôñ½Úµã·¶Î§
+    nodes1 = n1[(point_7-1+diff*(i-1)):(point_7+diff*(i-1))]#é€‰æ‹©èŠ‚ç‚¹èŒƒå›´
     a.Set(nodes=nodes1, name='SE%s'%i)
 
     session.viewports['Viewport: 1'].assemblyDisplay.setValues(adaptiveMeshConstraints=ON)
 
     regionDef=mdb.models[s].rootAssembly.sets['SE%s'%i]
-    #´´½¨x·½ÏòµÄÀú³ÌÊä³öÇëÇó
+    #åˆ›å»ºxæ–¹å‘çš„å†ç¨‹è¾“å‡ºè¯·æ±‚
     mdb.models[s].HistoryOutputRequest(name='XE%s'%i,
     createStepName='Step-1', variables=('COOR1', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
-    #»ñÈ¡¸Õ¸Õ´´Á¢µÄ¼¯ºÏ
+    #è·å–åˆšåˆšåˆ›ç«‹çš„é›†åˆ
     regionDef=mdb.models[s].rootAssembly.sets['SE%s'%i]
-    #´´½¨y·½ÏòµÄÀú³ÌÊä³öÇëÇó
+    #åˆ›å»ºyæ–¹å‘çš„å†ç¨‹è¾“å‡ºè¯·æ±‚
     mdb.models[s].HistoryOutputRequest(name='YE%s'%i,
     createStepName='Step-1', variables=('COOR3', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
@@ -151,19 +151,19 @@ for i in range(1,points+1):
     a = mdb.models[s].rootAssembly
     n1 = a.instances['Ring-1'].nodes
 
-    nodes1 = n1[(point_9-1+diff*(i-1)):(point_9+diff*(i-1))]#Ñ¡Ôñ½Úµã·¶Î§
+    nodes1 = n1[(point_9-1+diff*(i-1)):(point_9+diff*(i-1))]#é€‰æ‹©èŠ‚ç‚¹èŒƒå›´
     a.Set(nodes=nodes1, name='SF%s'%i)
 
     session.viewports['Viewport: 1'].assemblyDisplay.setValues(adaptiveMeshConstraints=ON)
 
     regionDef=mdb.models[s].rootAssembly.sets['SF%s'%i]
-    #´´½¨x·½ÏòµÄÀú³ÌÊä³öÇëÇó
+    #åˆ›å»ºxæ–¹å‘çš„å†ç¨‹è¾“å‡ºè¯·æ±‚
     mdb.models[s].HistoryOutputRequest(name='XF%s'%i,
     createStepName='Step-1', variables=('COOR1', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
-    #»ñÈ¡¸Õ¸Õ´´Á¢µÄ¼¯ºÏ
+    #è·å–åˆšåˆšåˆ›ç«‹çš„é›†åˆ
     regionDef=mdb.models[s].rootAssembly.sets['SF%s'%i]
-    #´´½¨y·½ÏòµÄÀú³ÌÊä³öÇëÇó
+    #åˆ›å»ºyæ–¹å‘çš„å†ç¨‹è¾“å‡ºè¯·æ±‚
     mdb.models[s].HistoryOutputRequest(name='YF%s'%i,
     createStepName='Step-1', variables=('COOR3', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
@@ -175,19 +175,19 @@ for i in range(1,points+1):
     a = mdb.models[s].rootAssembly
     n1 = a.instances['Ring-1'].nodes
 
-    nodes1 = n1[(point_11-1+diff*(i-1)):(point_11+diff*(i-1))]#Ñ¡Ôñ½Úµã·¶Î§
+    nodes1 = n1[(point_11-1+diff*(i-1)):(point_11+diff*(i-1))]#é€‰æ‹©èŠ‚ç‚¹èŒƒå›´
     a.Set(nodes=nodes1, name='SG%s'%i)
 
     session.viewports['Viewport: 1'].assemblyDisplay.setValues(adaptiveMeshConstraints=ON)
 
     regionDef=mdb.models[s].rootAssembly.sets['SG%s'%i]
-    #´´½¨x·½ÏòµÄÀú³ÌÊä³öÇëÇó
+    #åˆ›å»ºxæ–¹å‘çš„å†ç¨‹è¾“å‡ºè¯·æ±‚
     mdb.models[s].HistoryOutputRequest(name='XG%s'%i,
     createStepName='Step-1', variables=('COOR1', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
-    #»ñÈ¡¸Õ¸Õ´´Á¢µÄ¼¯ºÏ
+    #è·å–åˆšåˆšåˆ›ç«‹çš„é›†åˆ
     regionDef=mdb.models[s].rootAssembly.sets['SG%s'%i]
-    #´´½¨y·½ÏòµÄÀú³ÌÊä³öÇëÇó
+    #åˆ›å»ºyæ–¹å‘çš„å†ç¨‹è¾“å‡ºè¯·æ±‚
     mdb.models[s].HistoryOutputRequest(name='YG%s'%i,
     createStepName='Step-1', variables=('COOR3', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
@@ -199,19 +199,19 @@ for i in range(1,points+1):
     a = mdb.models[s].rootAssembly
     n1 = a.instances['Ring-1'].nodes
 
-    nodes1 = n1[(point_13-1+diff*(i-1)):(point_13+diff*(i-1))]#Ñ¡Ôñ½Úµã·¶Î§
+    nodes1 = n1[(point_13-1+diff*(i-1)):(point_13+diff*(i-1))]#é€‰æ‹©èŠ‚ç‚¹èŒƒå›´
     a.Set(nodes=nodes1, name='SH%s'%i)
 
     session.viewports['Viewport: 1'].assemblyDisplay.setValues(adaptiveMeshConstraints=ON)
 
     regionDef=mdb.models[s].rootAssembly.sets['SH%s'%i]
-    #´´½¨x·½ÏòµÄÀú³ÌÊä³öÇëÇó
+    #åˆ›å»ºxæ–¹å‘çš„å†ç¨‹è¾“å‡ºè¯·æ±‚
     mdb.models[s].HistoryOutputRequest(name='XH%s'%i,
     createStepName='Step-1', variables=('COOR1', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
-    #»ñÈ¡¸Õ¸Õ´´Á¢µÄ¼¯ºÏ
+    #è·å–åˆšåˆšåˆ›ç«‹çš„é›†åˆ
     regionDef=mdb.models[s].rootAssembly.sets['SH%s'%i]
-    #´´½¨y·½ÏòµÄÀú³ÌÊä³öÇëÇó
+    #åˆ›å»ºyæ–¹å‘çš„å†ç¨‹è¾“å‡ºè¯·æ±‚
     mdb.models[s].HistoryOutputRequest(name='YH%s'%i,
     createStepName='Step-1', variables=('COOR3', ), numIntervals=200,
     region=regionDef, sectionPoints=DEFAULT, rebar=EXCLUDE, sensor=ON)
